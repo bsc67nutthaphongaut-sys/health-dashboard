@@ -1,0 +1,6 @@
+{
+  "name": "Health Surveillance & Preventive Analytics Dashboard",
+  "description": "แดชบอร์ดเฝ้าระวังและวิเคราะห์สุขภาพเชิงรุก เชื่อมโยงฐานข้อมูลการคัดกรองสุขภาพ สรุปตัวชี้วัด วิเคราะห์ความเสี่ยง แนวโน้ม และพฤติกรรมในโทน Pastel Tech",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
