@@ -25,7 +25,7 @@ export default function App() {
   const [activeTab, setActiveTab] = useState<ActiveTab>('overview');
   const [lastUpdated, setLastUpdated] = useState<string>('22 ก.ย. 2569, 10:30 น.');
   const [isSyncing, setIsSyncing] = useState<boolean>(false);
-  const [creatorName, setCreatorName] = useState<string>('นายณัฐพงศ์ อุตตะมะ (รหัสนักศึกษา: bsc67nutthaphong)');
+  const creatorName = 'นายณัฐพงษ์ อุตตะราชา';
 
   const [filters, setFilters] = useState<FilterState>({
     zone: 'all',
@@ -109,7 +109,6 @@ export default function App() {
         isSyncing={isSyncing}
         onRefresh={syncData}
         creatorName={creatorName}
-        setCreatorName={setCreatorName}
         totalFiltered={filteredRecords.length}
         totalAll={records.length}
       />

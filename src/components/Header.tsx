@@ -21,7 +21,6 @@ interface HeaderProps {
   isSyncing: boolean;
   onRefresh: () => void;
   creatorName: string;
-  setCreatorName: (name: string) => void;
   totalFiltered: number;
   totalAll: number;
 }
@@ -33,19 +32,9 @@ export const Header: React.FC<HeaderProps> = ({
   isSyncing,
   onRefresh,
   creatorName,
-  setCreatorName,
   totalFiltered,
   totalAll
 }) => {
-  const [isEditingCreator, setIsEditingCreator] = useState(false);
-  const [tempCreator, setTempCreator] = useState(creatorName);
-
-  const handleSaveCreator = () => {
-    if (tempCreator.trim()) {
-      setCreatorName(tempCreator.trim());
-    }
-    setIsEditingCreator(false);
-  };
 
   const navItems = [
     { id: 'overview' as ActiveTab, label: 'ภาพรวมและตัวชี้วัด KPI', sublabel: 'Health Overview', icon: BarChart3 },
@@ -111,44 +100,13 @@ export const Header: React.FC<HeaderProps> = ({
               </button>
             </div>
 
-            {/* Creator Information */}
+            {/* Creator Information - Non-editable */}
             <div className="flex items-center gap-2 bg-amber-50/70 border border-amber-200/80 px-3 py-1.5 rounded-xl">
               <UserCheck className="w-4 h-4 text-amber-700 shrink-0" />
-              {isEditingCreator ? (
-                <div className="flex items-center gap-1.5">
-                  <input
-                    type="text"
-                    value={tempCreator}
-                    onChange={(e) => setTempCreator(e.target.value)}
-                    className="px-1.5 py-0.5 text-xs bg-white border border-amber-300 rounded focus:outline-none focus:ring-1 focus:ring-amber-500"
-                    placeholder="ชื่อ-นามสกุล ผู้จัดทำ"
-                    autoFocus
-                  />
-                  <button
-                    onClick={handleSaveCreator}
-                    className="text-[11px] px-2 py-0.5 bg-amber-600 text-white rounded hover:bg-amber-700 font-medium"
-                  >
-                    บันทึก
-                  </button>
-                </div>
-              ) : (
-                <div className="flex items-center gap-1.5">
-                  <div className="text-slate-700">
-                    <span className="text-slate-500 font-medium">ผู้จัดทำ: </span>
-                    <span className="font-semibold text-slate-900">{creatorName}</span>
-                  </div>
-                  <button
-                    onClick={() => {
-                      setTempCreator(creatorName);
-                      setIsEditingCreator(true);
-                    }}
-                    className="text-[10px] text-amber-700 underline hover:text-amber-900 ml-1 font-medium"
-                    title="แก้ไขชื่อผู้จัดทำ"
-                  >
-                    (แก้ไข)
-                  </button>
-                </div>
-              )}
+              <div className="text-slate-700">
+                <span className="text-slate-500 font-medium">ผู้จัดทำ: </span>
+                <span className="font-semibold text-slate-900">{creatorName}</span>
+              </div>
             </div>
           </div>
 
